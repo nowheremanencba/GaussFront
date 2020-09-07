@@ -78,6 +78,14 @@ save() {
   if (!this.form.valid) {
     return;
   } 
+  if(this.comparePrecioCosto(this.form.controls.Precio.value),this.form.controls.Costo.value){ 
+    Swal.fire(
+      'Atencion!',
+      'El precio no debe superar el monto ingresado',
+      'error'
+    )
+    return;
+  }
   const producto: Producto = {
     id : this.form.controls.Id.value,
     nombre: this.form.controls.Nombre.value,
@@ -121,10 +129,13 @@ save() {
 
 // validarPrecioCosto 
 comparePrecioCosto(control: FormControl) {
+     
   if (!control || !control.parent) {
     return null;
   }
   if (control.value < control.parent.get('Costo').value) {
+    console.log(control.value);
+    console.log(control.parent.get('Costo').value);
     return {'precioCosto': true}
   }
   return null;
