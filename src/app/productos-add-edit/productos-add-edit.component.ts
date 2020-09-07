@@ -4,8 +4,7 @@ import { Producto } from 'src/models/Producto.model';
 import { ProductoService } from '../services/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MarcaService } from '../services/marca.service';
-import { Marca } from '../../models/Marca.model';
-import { PrecioCostoValidator } from '../validators/preciocosto.validator';
+import { Marca } from '../../models/Marca.model'; 
 import Swal from 'sweetalert2';
 
 @Component({
