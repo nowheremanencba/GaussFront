@@ -38,7 +38,7 @@ export class ProductosAddEditComponent implements OnInit {
     {
       Id: 0,
       Nombre: ['', [Validators.required]],
-      Costo: ['', [Validators.required]], 
+      Costo: ['', [Validators.required, this.comparePrecioCosto]], 
       Precio: ['', [Validators.required, this.comparePrecioCosto]],
       marcaSelected: ['', [Validators.required]]
     }
