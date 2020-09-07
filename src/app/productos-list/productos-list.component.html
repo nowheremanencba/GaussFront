@@ -1,0 +1,30 @@
+<h2>Productos</h2>
+<hr>
+<p>
+    <a [routerLink]="['/add']" class="btn btn-primary">Nuevo</a>
+</p>
+<table class="table" >
+   <thead>
+     <tr>
+       <th scope="col">#</th> 
+       <th scope="col">Nombre</th>
+       <th scope="col">Costo</th>
+       <th scope="col">Precio</th>
+       <th scope="col">Marca</th>
+       <th scope="col"></th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let prod of productos">
+       <th >{{prod.id  }}</th>
+       <th>{{prod.nombre }}</th>
+       <td>{{prod.costo }}</td>
+       <td>{{prod.precio}}</td>
+       <td>{{prod.marca.nombre}}</td>
+       <td><a [routerLink]="['productos/edit', prod.id]" class="btn btn-info">Editar</a></td> 
+       <td><a [routerLink]="" (click)="delete(prod.id)" class="btn btn-danger">Eliminar</a></td>
+     </tr> 
+   </tbody>
+ </table>
+
+ 

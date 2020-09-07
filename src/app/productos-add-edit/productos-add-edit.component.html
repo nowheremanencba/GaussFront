@@ -1,0 +1,47 @@
+<h2>{{actionType}} Producto</h2>
+<hr>
+<form [formGroup]="form" (ngSubmit)="save()"  #formProd="ngForm" novalidate>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Nombre</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="Nombre" name="Nombre"  [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }" required>
+      <div *ngIf="submitted && f.Nombre.errors" class="invalid-feedback">
+        <div *ngIf="f.Nombre.errors.required">Nombre es requerido</div>
+      </div>
+    </div> 
+  </div> 
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Costo</label>
+    <div class="col-md-12">
+      <input class="form-control" type="number" formControlName="Costo"  [ngClass]="{ 'is-invalid': submitted && f.Costo.errors }" required>
+        <div *ngIf="submitted && form.controls.Costo.errors" class="invalid-feedback">
+          <div *ngIf="form.controls.Costo.errors.required">El costo es requerido</div>
+       </div> 
+    </div> 
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Precio</label>
+    <div class="col-md-12">
+      <input class="form-control" type="number" formControlName="Precio" [ngClass]="{ 'is-invalid': submitted && f.Precio.errors }"  required>
+      <div *ngIf="submitted && form.controls.Precio.errors" class="invalid-feedback">
+        <div *ngIf="form.controls.Precio.errors.required">El precio es requerido</div>
+        <div *ngIf="form.controls.Precio.errors.precioCosto">El precio no debe ser menor que el costo</div>
+     </div> 
+    </div>  
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Marca</label>
+    <div class="col-md-12">   
+          <select formControlName="marcaSelected" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.marcaSelected.errors }">  
+            <option *ngFor="let c of marcas" [ngValue]="c.id">{{c.nombre}}</option>  
+          </select>
+          <div *ngIf="submitted && form.controls.marcaSelected.errors" class="invalid-feedback">
+            <div *ngIf="form.controls.marcaSelected.errors.required">La marca es requerido</div>
+         </div> 
+    </div> 
+  </div> 
+  <div class="form-group">
+    <button type="submit" class="btn btn-success float-right" >Guardar</button>
+    <button class="btn btn-secondary float-left" (click)="cancel()">Volver</button>
+  </div>
+</form>
